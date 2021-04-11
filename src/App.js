@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+// Installing the dark mode component, do npm install styled-components
+import { useState } from "react";
+import "./App.css";
+import { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme } from "./themes";
 
 function App() {
+  const [theme, setTheme] = useState("light");
+
+  const themeToggle = () => {
+    theme === "light" ? setTheme("dark") : setTheme("light");
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme === light ? "" : ""}>
+      <div className="App"></div>
+    </ThemeProvider>
   );
 }
 
